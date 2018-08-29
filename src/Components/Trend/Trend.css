@@ -1,10 +1,10 @@
-.Content {
+.Trend {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-content: center; 
     border: 1px solid black;
+    height: 50px;
     
     padding: 5px;
-    margin: 5px;
 }
