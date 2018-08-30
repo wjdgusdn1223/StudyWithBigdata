@@ -8,3 +8,34 @@
     padding: 5px;
     margin: 5px;
 }
+
+.LeftSide {
+    display: flex;
+    flex: 1;
+}
+
+.Content-center {
+    display: flex;
+    flex: 3;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center; 
+    border: 1px solid black;
+
+    padding: 5px;
+}
+
+.MainContent {
+    display: flex;
+    flex: 3;
+}
+
+.Trend {
+    display: flex;
+    flex: 1;
+}
+
+.RightSide {
+    display: flex;
+    flex: 1;
+}

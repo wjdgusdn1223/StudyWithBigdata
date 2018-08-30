@@ -4,36 +4,44 @@ import Header from './../Header/Header';
 import Content from './../Content/Content';
 
 class Container extends Component {
+  state = {
+    userKey: '1248917020446657164',
+    mod: '',
+    keyword: ''
+  }
+
   render() {
     return (
       <div className="Container">
-        <Header urlSearch={this._urlSearch} />
-        <Content />
+        <Header 
+          searchEvent={this._searchEvent}
+        />
+        <Content 
+          userKey={this.state.userKey} 
+          mod={this.state.mod} 
+          keyword={this.state.keyword}
+          categoryEvent={this._categoryEvent} 
+        />
       </div>
     );
   }
 
-  //1248917020446657164
-  _urlSearch = async (mod, key) => {
-    const text = await this._callFilterApi();
-
-    console.log(text)
+  _searchEvent = (mod, keyword) => {
+    this.setState({
+      key: this.state.key,
+      mod: mod,
+      keyword: keyword
+    })
   }
 
-  _callFilterApi = (mod, keyword) => {
-
-    return fetch('http://api.datamixi.com/datamixiApi/filter', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: {
-        key: '1248917020446657164',
-        url: keyword
-      }
+  _categoryEvent = (category) => {
+    this.setState({
+      key: this.state.key,
+      mod: 'category',
+      keyword: category
     })
-    .then(text => text.json())
-    .catch(err => console.log(err))
+
+    console.log(category)
   }
 }
 

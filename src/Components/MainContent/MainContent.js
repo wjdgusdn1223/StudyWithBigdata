@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './Trend.css';
+import './MainContent.css';
 
-class Trend extends Component {
+class MainContent extends Component {
   data = {}
 
   shouldComponentUpdate = async (nextProps, nextState) => {
@@ -16,15 +16,15 @@ class Trend extends Component {
   
   render() {
     return (
-      <div className="Trend">
-        여기에 표시된다
+      <div className="MainContent">
+        메인 컨텐츠
       </div>
     );
   }
 
   _callTrendApi = (nProps) => {
     return fetch(
-      'http://api.datamixi.com/datamixiApi/trend?target=news&keyword=' + 
+      'http://api.datamixi.com/datamixiApi/search?target=news&keyword=' + 
       nProps.keyword + 
       '&key=' + nProps.userKey)
     .then(trend => trend.json())
@@ -32,4 +32,4 @@ class Trend extends Component {
   }
 }
 
-export default Trend;
+export default MainContent;

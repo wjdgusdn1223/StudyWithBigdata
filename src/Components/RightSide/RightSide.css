@@ -1,0 +1,9 @@
+.RightSide {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center; 
+    border: 1px solid black;
+    
+    padding: 5px;
+}
