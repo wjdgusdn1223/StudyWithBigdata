@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import './RightSide.css';
 
 class RightSide extends Component {
-  data = {}
+  state = {}
 
-  shouldComponentUpdate = async (nextProps, nextState) => {
+  shouldComponentUpdate = (nextProps, nextState) => {
     if(JSON.stringify(nextProps) !== JSON.stringify(this.props)) {
-      this.data = await this._callTrendApi(nextProps)
-
-      console.log(this.data)
+      this._getData(nextProps)
+    }
+    else if(JSON.stringify(nextState) !== JSON.stringify(this.state)) {
       return true;
     }
     return false;  
@@ -17,17 +17,25 @@ class RightSide extends Component {
   render() {
     return (
       <div className="RightSide">
-        오른쪽 사이드
+        
       </div>
     );
   }
 
-  _callTrendApi = (nProps) => {
+  _getData = async (nProps) => {
+    const data = await this._callApi(nProps)
+
+    this.setState({
+      data
+    })
+  }
+
+  _callApi = (nProps) => {
     return fetch(
       'http://api.datamixi.com/datamixiApi/topictrend?target=news&keyword=' + 
       nProps.keyword + 
       '&key=' + nProps.userKey)
-    .then(trend => trend.json())
+    .then(data => data.json())
     .catch(err => console.log(err))
   }
 }
