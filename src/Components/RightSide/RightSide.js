@@ -26,6 +26,7 @@ class RightSide extends Component {
         id={datum.id}
         name={datum.name}
         topicSearchEvent={this.props.topicSearchEvent} 
+        key={datum.id}
       />
     })
 
@@ -44,8 +45,6 @@ class RightSide extends Component {
 
   _getData = async (nProps) => {
     const data = await this._callApi(nProps)
-    
-    console.log(data)
 
     this.setState({
       data
