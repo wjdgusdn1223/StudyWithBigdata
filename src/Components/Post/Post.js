@@ -1,17 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Post.css';
 
-class Post extends Component {
-
-  render() {
-    const { data } = this.props.data;
+function Post({title, date, image, uri, content}) {
     return (
       <div className="Post">
-    {data ? (data.length !== 0 ? (<h2>{data[0].fields.title[0]}</h2>) : "") : ""}
+        <div className="Post-title">
+          <h1>{title}</h1>
+        </div>
+        <div className="Post-date">
+          {date}
+        </div>
+        <div className="Post-uri">
+          <a href={uri}>{uri}</a>
+        </div>
+        {image ? <img src={image} alt={title} title={title} className="Post-image" /> : ""}
+        <div className="Post-content">
+          {content}
+        </div>
       </div>
     );
-  }
-
 }
 
 export default Post;

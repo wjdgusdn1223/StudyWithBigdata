@@ -1,9 +1,9 @@
 .MainContent {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-content: center; 
+    flex-direction: column;
     border: 1px solid black;
     
+    overflow-y: auto;
+
     padding: 5px;
 }

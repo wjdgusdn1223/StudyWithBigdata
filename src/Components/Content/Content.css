@@ -16,7 +16,7 @@
 
 .Content-center {
     display: flex;
-    flex: 3;
+    flex: 4;
     flex-direction: column;
     justify-content: center;
     align-content: center; 
