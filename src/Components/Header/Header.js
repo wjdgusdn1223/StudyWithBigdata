@@ -4,7 +4,10 @@ import './Header.css';
 class Header extends Component {
 
   componentDidUpdate = () => {
-    this.refs.Keyword.value = this.props.keyword
+    if(this.props.mod === "Social")
+      this.refs.Keyword.value = this.props.keyword
+    else 
+      this.refs.Keyword.value = ""
   }
 
   render() {

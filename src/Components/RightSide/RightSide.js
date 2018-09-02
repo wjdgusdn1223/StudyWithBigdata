@@ -35,10 +35,11 @@ class RightSide extends Component {
 
   render() {
     const { data } = this.state;
+    const { mod } = this.props;
     return (
       <div className="RightSide" id="RightSide">
         <h2>연관 Topic</h2>
-        {data ? this._renderData() : "Loading"}
+        {data && mod === "Social" ? this._renderData() : "Loading"}
       </div>
     );
   }

@@ -20,18 +20,32 @@ class MainContent extends Component {
   }
 
   _renderData = () => {
-    const data = this.state.data.map(datum => {
-      return <Post
-        title={datum.fields.title[0]}
-        date={datum.fields.published_date[0]}
-        uri={datum.fields.source_uri[0]}
-        content={datum.fields.content[0]}
-        image={datum.fields.images ? datum.fields.images[0] : false}
-        key={datum.fields.title[0]}
-      />
-    })
-
-    return data;
+    if(this.props.mod === "Social") {
+      const data = this.state.data.map(datum => {
+        return <Post
+          title={datum.fields.title[0]}
+          date={datum.fields.published_date[0]}
+          uri={datum.fields.source_uri[0]}
+          content={datum.fields.content[0]}
+          image={datum.fields.images ? datum.fields.images[0] : false}
+          key={datum.fields.title[0]}
+        />
+      })
+      return data;
+    }
+    else {
+      const data = this.state.data.map(datum => {
+        return <Post
+          title={datum.title}
+          date={datum.date}
+          uri={datum.orgUrl}
+          content={datum.content}
+          image={datum.selected_image ? datum.selected_image.url : false}
+          key={datum.title}
+        />
+      })
+      return data;
+    }
   }
 
   render() {
@@ -58,9 +72,16 @@ class MainContent extends Component {
       var dup = 0;
 
       for(var i in array) {
-        if(item.fields.title[0] === array[i].fields.title[0] &&
+        if(item.fields){
+          if(item.fields.title[0] === array[i].fields.title[0] &&
+              i < array.indexOf(item))
+            dup++;
+        }
+        else {
+          if(item.title === array[i].title &&
             i < array.indexOf(item))
           dup++;
+        }
       }
 
       return (1 > dup);
@@ -68,13 +89,24 @@ class MainContent extends Component {
   }
 
   _callApi = (nProps) => {
-    return fetch(
-      'http://api.datamixi.com/datamixiApi/search?count=30&target=news&keyword=' + 
-      nProps.keyword + 
-      '&key=' + nProps.userKey)
-    .then(data => data.json())
-    .then(json => json.return_object[0].documents)
-    .catch(err => console.log(err))
+    if(nProps.mod === "Social") {
+      return fetch(
+        'http://api.datamixi.com/datamixiApi/search?count=30&target=news&keyword=' + 
+        nProps.keyword + 
+        '&key=' + nProps.userKey)
+      .then(data => data.json())
+      .then(json => json.return_object[0].documents)
+      .catch(err => console.log(err))
+    }
+    else {
+      return fetch(
+        'http://api.datamixi.com/datamixiApi/topictoday?count=30&category=' + 
+        nProps.keyword + 
+        '&key=' + nProps.userKey)
+      .then(data => data.json())
+      .then(json => json.document)
+      .catch(err => console.log(err))
+    }
   }
 }
 

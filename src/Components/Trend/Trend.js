@@ -18,9 +18,10 @@ class Trend extends Component {
 
   render() {
     const { data } = this.state;
+    const { mod } = this.props;
     return (
       <div className="Trend" id="Trend">
-        {data ? <AreaChart 
+        {data && mod === "Social" ? <AreaChart 
                   width={document.getElementById("Trend").getBoundingClientRect().width} 
                   height={document.getElementById("Trend").getBoundingClientRect().height} 
                   data={data}
@@ -31,7 +32,7 @@ class Trend extends Component {
                   <YAxis/>
                   <Tooltip/>
                   <Area type='monotone' dataKey='Count' stroke='#8884d8' fill='#8884d8' />
-                </AreaChart> : ""}
+                </AreaChart> : "Loading"}
       </div>
     );
   }

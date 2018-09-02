@@ -16,6 +16,7 @@ class Container extends Component {
         <Header 
           searchEvent={this._searchEvent}
           keyword={this.state.keyword}
+          mod={this.state.mod} 
         />
         <Content 
           userKey={this.state.userKey} 
