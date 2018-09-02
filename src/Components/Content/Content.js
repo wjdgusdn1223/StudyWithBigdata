@@ -12,10 +12,23 @@ class Content extends Component {
       <div className="Content">
         <LeftSide categoryEvent={this.props.categoryEvent} />
         <div className="Content-center">
-          <MainContent mod={this.props.mod} keyword={this.props.keyword} userKey={this.props.userKey} />
-          <Trend mod={this.props.mod} keyword={this.props.keyword} userKey={this.props.userKey} />
+          <MainContent 
+            mod={this.props.mod} 
+            keyword={this.props.keyword} 
+            userKey={this.props.userKey} 
+          />
+          <Trend 
+            mod={this.props.mod} 
+            keyword={this.props.keyword} 
+            userKey={this.props.userKey} 
+          />
         </div>
-        <RightSide mod={this.props.mod} keyword={this.props.keyword} userKey={this.props.userKey} />
+        <RightSide 
+          mod={this.props.mod} 
+          keyword={this.props.keyword} 
+          userKey={this.props.userKey}
+          topicSearchEvent={this.props.topicSearchEvent} 
+        />
       </div>
     );
   }

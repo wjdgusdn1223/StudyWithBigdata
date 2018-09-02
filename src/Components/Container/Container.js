@@ -15,12 +15,14 @@ class Container extends Component {
       <div className="Container">
         <Header 
           searchEvent={this._searchEvent}
+          keyword={this.state.keyword}
         />
         <Content 
           userKey={this.state.userKey} 
           mod={this.state.mod} 
           keyword={this.state.keyword}
           categoryEvent={this._categoryEvent} 
+          topicSearchEvent={this._topicSearchEvent}
         />
       </div>
     );
@@ -37,11 +39,21 @@ class Container extends Component {
   _categoryEvent = (category) => {
     this.setState({
       key: this.state.key,
-      mod: 'category',
+      mod: 'Category',
       keyword: category
     })
 
     console.log(category)
+  }
+
+  _topicSearchEvent = (name) => {
+    this.setState({
+      key: this.state.key,
+      mod: 'Social',
+      keyword: name
+    })
+
+    console.log(name)
   }
 }
 
