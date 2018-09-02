@@ -16,6 +16,10 @@ class RightSide extends Component {
     return false;  
   }
   
+  componentDidUpdate = () => {
+    document.getElementById("RightSide").scrollTo(0,0)
+  }
+
   _renderData = () => {
     const data = this.state.data.map(datum => {
       return <Topic
@@ -31,7 +35,7 @@ class RightSide extends Component {
   render() {
     const { data } = this.state;
     return (
-      <div className="RightSide">
+      <div className="RightSide" id="RightSide">
         <h2>연관 Topic</h2>
         {data ? this._renderData() : "Loading"}
       </div>

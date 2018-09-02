@@ -15,6 +15,10 @@ class MainContent extends Component {
     return false;  
   }
   
+  componentDidUpdate = () => {
+    document.getElementById("MainContent").scrollTo(0,0)
+  }
+
   _renderData = () => {
     const data = this.state.data.map(datum => {
       return <Post
@@ -32,7 +36,7 @@ class MainContent extends Component {
   render() {
       const { data } = this.state;
     return (
-      <div className="MainContent">
+      <div className="MainContent" id="MainContent">
         {data ? this._renderData() : "Loading"}
       </div>
     );
