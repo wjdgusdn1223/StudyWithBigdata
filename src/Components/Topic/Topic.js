@@ -8,13 +8,26 @@ class Topic extends Component {
   render() {
     const { id, name } = this.props;
     return (
-      <div className="Topic" style={{marginLeft: '10px', marginTop: '10px'}}>
-        <Grid container direction='row' alignItems='center' spacing={16}>
-          <Typography variant="title">
-            {id} 위 -
+      <div className="Topic" style={{marginTop: '20px'}}>
+        <Grid 
+          container 
+          direction='row' 
+          alignItems='center' 
+          spacing={16} 
+          style={{marginLeft: '30px'}}
+        >
+          <Typography variant="display1">
+            {id + 'st - '}
           </Typography>
-          <Button onClick={this._topicEvent}>
-            {name}
+          <Button 
+            onClick={this._topicEvent} 
+            variant="extendedFab" 
+            size='small' 
+            style={{marginLeft: '10px', backgroundColor: '#fc9d9a'}}
+          >
+            <Typography variant="title">
+              {name}
+            </Typography>
           </Button>
         </Grid>
       </div>

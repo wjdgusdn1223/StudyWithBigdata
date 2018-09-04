@@ -27,12 +27,16 @@ class RightSide extends Component {
 
   _renderData = () => {
     const data = this.state.data.map(datum => {
-      return <Topic
-        id={datum.id}
-        name={datum.name}
-        topicSearchEvent={this.props.topicSearchEvent} 
-        key={datum.id}
-      />
+      return (
+        <Grid item xs={12} key={datum.id}>
+          <Topic
+            id={datum.id}
+            name={datum.name}
+            topicSearchEvent={this.props.topicSearchEvent} 
+            key={datum.id}
+          />
+        </Grid>
+      )
     })
 
     return data;
@@ -42,31 +46,52 @@ class RightSide extends Component {
     const { data } = this.state;
     const { mod } = this.props;
     return (
-      <div className="RightSide" id="RightSide">
+      <div className="RightSide">
         <Grid 
           container
           justify='center'
           alignItems='flex-start'
         >
-          <Grid item xs={11}>
+          <Grid item xs={12}>
             <Paper 
               style={{
-                margin: '10px', 
+                marginTop: '10px',
+                marginLeft: '20px',
                 height: '86vh',
-                maxHeight: '86vh', 
-                overflowY: 'auto', 
-                overflowX: 'hidden',
-                backgroundColor: '#FCCA46'
+                maxHeight: '86vh',
+                backgroundColor: '#A593E0'
               }}
+              id="RightSide"
             >
-              <Grid container direction='column'>
-                <Typography 
-                  variant="display1"
-                  style={{margin: '10px'}} 
+              <Typography 
+                  variant="display2"
+                  style={{
+                    marginLeft: '10px',
+                    height: '6vh'
+                  }} 
                 >
                   Topic Rank
-                </Typography>
-                {data && mod === "Social" ? this._renderData() : ""}
+              </Typography>
+              <Grid 
+                container 
+                direction='row'
+                style={{
+                  overflowY: 'auto',
+                  overflowX: 'hidden',
+                  height: '80vh'
+                }}
+              >
+                {data && mod === "Social" ? this._renderData() : 
+                  <Grid 
+                    container
+                    alignItems='center'
+                    justify='center' 
+                  > 
+                    <Typography variant='display3'>
+                      Loading..
+                    </Typography>
+                  </Grid>
+                }
               </Grid>
             </Paper>
           </Grid>

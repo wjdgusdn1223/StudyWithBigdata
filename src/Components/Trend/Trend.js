@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
 import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 
 class Trend extends Component {
   state = {}
@@ -24,22 +26,30 @@ class Trend extends Component {
     const { mod } = this.props;
     return (
       <div className="Trend" id="Trend" style={{maxHeight: '20vh', paddingTop: '10px'}}>
-        <Paper style={{height: '20vh', backgroundColor: '#e1eef6'}}>
-          {data && mod === "Social" ? 
-            <AreaChart 
-              width={document.getElementById("Trend").getBoundingClientRect().width} 
-              height={document.getElementById("Trend").getBoundingClientRect().height} 
-              data={data}
-              margin={{top: 10, right: 30, left: 0, bottom: 0}}
-            >
-              <CartesianGrid strokeDasharray="3 3"/>
-              <XAxis dataKey="Time"/>
-              <YAxis/>
-              <Tooltip/>
-              <Area type='monotone' dataKey='Count' stroke='#FE7F2D' fill='#B034FF' />
-            </AreaChart> : 
-            ""
-          }
+        <Paper style={{height: '20vh', backgroundColor: '#E0E3DA'}}>
+          <Grid 
+            container
+            alignItems='center'
+            justify='center' 
+          > 
+            {data && mod === "Social" ? 
+              <AreaChart 
+                width={document.getElementById("Trend").getBoundingClientRect().width} 
+                height={document.getElementById("Trend").getBoundingClientRect().height} 
+                data={data}
+                margin={{top: 10, right: 30, left: 0, bottom: 0}}
+              >
+                <CartesianGrid strokeDasharray="3 3"/>
+                <XAxis dataKey="Time"/>
+                <YAxis/>
+                <Tooltip/>
+                <Area type='monotone' dataKey='Count' stroke='#FE7F2D' fill='#3ac569' />
+              </AreaChart> : 
+              <Typography variant='display3' style={{marginTop: '6vh'}}>
+                Loading..
+              </Typography>
+            }
+          </Grid>
         </Paper>
       </div>
     );

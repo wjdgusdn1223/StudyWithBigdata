@@ -10,6 +10,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
+import Search from '@material-ui/icons/SearchRounded';
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 function Transition(props) {
   return <Slide direction="up" {...props} />;
@@ -37,7 +39,7 @@ class Header extends Component {
   render() {
     return (
       <div className="Header">
-        <AppBar style={{height: '11vh', backgroundColor: '#233D4D'}} position='static'>
+        <AppBar style={{height: '11vh', backgroundColor: '#566270'}} position='static'>
           <Grid 
             container 
             alignItems="center"
@@ -56,6 +58,13 @@ class Header extends Component {
                 margin='normal'
                 autoComplete="off"
                 disabled={this.state.error}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Search />
+                    </InputAdornment>
+                  ),
+                }}
               />
             </MuiThemeProvider>
             </Grid>

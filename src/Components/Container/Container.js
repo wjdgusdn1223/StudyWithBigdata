@@ -13,7 +13,7 @@ class Container extends Component {
 
   render() {
     return (
-      <div className="container" style={{backgroundColor: '#A1C181'}}>
+      <div className="container" style={{backgroundColor: '#FFFFF3'}}>
         <Grid container>
           <Grid item xs={12}>
             <Header 

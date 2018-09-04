@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import All from '@material-ui/icons/LanguageRounded';
@@ -22,113 +21,110 @@ class LeftSide extends Component {
         justify='center'
       >
         <Grid item xs={10}>
-          <Paper 
-            style={{
-              height: '86vh', 
-              marginTop: '10px',
-              marginBottom: '10px',
-              marginRight: '20px',
-              marginLeft: '10px', 
-              backgroundColor: '#FE7F2D'
-            }}
+          <Grid 
+            container
+            direction='column'
+            justify='space-evenly'
+            alignItems='center'
+            style={{height: '86vh'}}
           >
-            <Grid 
-              container
-              direction='column'
-              justify='space-evenly'
-              alignItems='center'
-              style={{height: '86vh'}}
-            >
-              <Tooltip title="All" placement="right"
-                TransitionComponent={Zoom}>
-                <Button 
-                  variant="fab" 
-                  aria-label="All"
-                  id="all"
-                  onClick={this._clickEvent}
-                >
-                  <All />
-                </Button>
-              </Tooltip>
-              <Tooltip title="Story" placement="right"
-                TransitionComponent={Zoom}>
-                <Button 
-                  variant="fab" 
-                  aria-label="Story" 
-                  id="story"
-                  onClick={this._clickEvent}
-                >
-                  <Story />
-                </Button>
-              </Tooltip>
-              <Tooltip title="Entertainment" placement="right"
-                TransitionComponent={Zoom}>
-                <Button 
-                  variant="fab" 
-                  aria-label="Entertainment" 
-                  id="entertainment"
-                  onClick={this._clickEvent}
-                >
-                  <Entertainment />
-                </Button>
-              </Tooltip>
-              <Tooltip title="Politics" placement="right"
-                TransitionComponent={Zoom}>
-                <Button 
-                  variant="fab" 
-                  aria-label="Politics" 
-                  id="politics"
-                  onClick={this._clickEvent}
-                >
-                  <Politics />
-                </Button>
-              </Tooltip>
-              <Tooltip title="Economics" placement="right"
-                TransitionComponent={Zoom}>
-                <Button 
-                  variant="fab" 
-                  aria-label="Economics" 
-                  id="economics"
-                  onClick={this._clickEvent}
-                >
-                  <Economics />
-                </Button>
-              </Tooltip>
-              <Tooltip title="Society" placement="right"
-                TransitionComponent={Zoom}>
-                <Button 
-                  variant="fab" 
-                  aria-label="Society" 
-                  id="society"
-                  onClick={this._clickEvent}
-                >
-                  <Society />
-                </Button>
-              </Tooltip>
-              <Tooltip title="It" placement="right"
-                TransitionComponent={Zoom}>
-                <Button 
-                  variant="fab" 
-                  aria-label="It" 
-                  id="it"
-                  onClick={this._clickEvent}
-                >
-                  <It />
-                </Button>
-              </Tooltip>
-              <Tooltip title="World" placement="right"
-                TransitionComponent={Zoom}>
-                <Button 
-                  variant="fab" 
-                  aria-label="World" 
-                  id="world"
-                  onClick={this._clickEvent}
-                >
-                  <World />
-                </Button>
-              </Tooltip>
-            </Grid>
-          </Paper>
+            <Tooltip title="All" placement="right"
+              TransitionComponent={Zoom}>
+              <Button 
+                variant="fab" 
+                aria-label="All"
+                id="all"
+                onClick={this._clickEvent}
+                style={{backgroundColor: '#9DC8C8'}}
+              >
+                <All />
+              </Button>
+            </Tooltip>
+            <Tooltip title="Story" placement="right"
+              TransitionComponent={Zoom}>
+              <Button 
+                variant="fab" 
+                aria-label="Story" 
+                id="story"
+                onClick={this._clickEvent}
+                style={{backgroundColor: '#9DC8C8'}}
+              >
+                <Story />
+              </Button>
+            </Tooltip>
+            <Tooltip title="Entertainment" placement="right"
+              TransitionComponent={Zoom}>
+              <Button 
+                variant="fab" 
+                aria-label="Entertainment" 
+                id="entertainment"
+                onClick={this._clickEvent}
+                style={{backgroundColor: '#9DC8C8'}}
+              >
+                <Entertainment />
+              </Button>
+            </Tooltip>
+            <Tooltip title="Politics" placement="right"
+              TransitionComponent={Zoom}>
+              <Button 
+                variant="fab" 
+                aria-label="Politics" 
+                id="politics"
+                onClick={this._clickEvent}
+                style={{backgroundColor: '#9DC8C8'}}
+              >
+                <Politics />
+              </Button>
+            </Tooltip>
+            <Tooltip title="Economics" placement="right"
+              TransitionComponent={Zoom}>
+              <Button 
+                variant="fab" 
+                aria-label="Economics" 
+                id="economics"
+                onClick={this._clickEvent}
+                style={{backgroundColor: '#9DC8C8'}}
+              >
+                <Economics />
+              </Button>
+            </Tooltip>
+            <Tooltip title="Society" placement="right"
+              TransitionComponent={Zoom}>
+              <Button 
+                variant="fab" 
+                aria-label="Society" 
+                id="society"
+                onClick={this._clickEvent}
+                style={{backgroundColor: '#9DC8C8'}}
+              >
+                <Society />
+              </Button>
+            </Tooltip>
+            <Tooltip title="It" placement="right"
+              TransitionComponent={Zoom}>
+              <Button 
+                variant="fab" 
+                aria-label="It" 
+                id="it"
+                onClick={this._clickEvent}
+                style={{backgroundColor: '#9DC8C8'}}
+              >
+                <It />
+              </Button>
+            </Tooltip>
+            <Tooltip title="World" placement="right"
+              TransitionComponent={Zoom}>
+              <Button 
+                variant="fab" 
+                aria-label="World" 
+                id="world"
+                onClick={this._clickEvent}
+                style={{backgroundColor: '#9DC8C8'}}
+              >
+                <World />
+              </Button>
+            </Tooltip>
+          </Grid>
         </Grid>
       </Grid>
     );

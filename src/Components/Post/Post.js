@@ -15,13 +15,13 @@ class Post extends Component {
   }
 
   render() {
-    const { title, date, uri, content, image, key } = this.props;
+    const { title, date, content, image } = this.props;
     return (
       <div>
         <Paper style={{marginBottom: '10px', marginLeft: '5px', marginRight: '5px'}}>
           <Button onClick={() => {this.setState({open:true})}}>
-            <Typography variant='Headline'>
-              {date + ' - ' + title}
+            <Typography variant='title'>
+              {date.substring(0,10) + ' _ ' + title}
             </Typography>
           </Button>
         </Paper>
@@ -39,7 +39,7 @@ class Post extends Component {
             </Typography>
           </DialogTitle>
           <DialogContent>
-            <img src={image} width="100%" height="auto" />
+            <img src={image} alt={title} width="100%" height="auto" />
             <DialogContentText>
               <Typography variant='subheading'>
                 {content}

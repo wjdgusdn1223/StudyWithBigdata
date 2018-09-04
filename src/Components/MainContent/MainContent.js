@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Post from './../Post/Post';
 
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 
 class MainContent extends Component {
   state = {}
@@ -82,7 +83,17 @@ class MainContent extends Component {
             height: '66vh'
           }}
         >
-          {data ? this._renderData() : ""}
+          {data ? this._renderData() :
+            <Grid 
+              container
+              alignItems='center'
+              justify='center' 
+            > 
+              <Typography variant='display3'>
+                Loading..
+              </Typography>
+            </Grid>
+          }
         </Grid>
       </div>
     );
