@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
-import './RightSide.css';
 
 import Topic from './../Topic/Topic'
+
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 
 class RightSide extends Component {
   state = {}
 
   shouldComponentUpdate = (nextProps, nextState) => {
-    if(JSON.stringify(nextProps) !== JSON.stringify(this.props)) {
+    if(JSON.stringify(nextProps) !== JSON.stringify(this.props) &&
+        nextProps.mod === "Social") {
       this._getData(nextProps)
     }
-    else if(JSON.stringify(nextState) !== JSON.stringify(this.state)) {
+    else if(JSON.stringify(nextState) !== JSON.stringify(this.state) ||
+              nextProps.mod !== "Social") {
       return true;
     }
     return false;  
@@ -38,8 +43,34 @@ class RightSide extends Component {
     const { mod } = this.props;
     return (
       <div className="RightSide" id="RightSide">
-        <h2>연관 Topic</h2>
-        {data && mod === "Social" ? this._renderData() : "Loading"}
+        <Grid 
+          container
+          justify='center'
+          alignItems='flex-start'
+        >
+          <Grid item xs={11}>
+            <Paper 
+              style={{
+                margin: '10px', 
+                height: '86vh',
+                maxHeight: '86vh', 
+                overflowY: 'auto', 
+                overflowX: 'hidden',
+                backgroundColor: '#FCCA46'
+              }}
+            >
+              <Grid container direction='column'>
+                <Typography 
+                  variant="display1"
+                  style={{margin: '10px'}} 
+                >
+                  Topic Rank
+                </Typography>
+                {data && mod === "Social" ? this._renderData() : ""}
+              </Grid>
+            </Paper>
+          </Grid>
+        </Grid>
       </div>
     );
   }

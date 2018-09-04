@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
-import './Trend.css';
 
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+
+import Paper from '@material-ui/core/Paper';
 
 class Trend extends Component {
   state = {}
   
   shouldComponentUpdate = (nextProps, nextState) => {
-    if(JSON.stringify(nextProps) !== JSON.stringify(this.props)) {
+    if(JSON.stringify(nextProps) !== JSON.stringify(this.props) &&
+        nextProps.mod === "Social") {
       this._getData(nextProps)
     }
-    else if(JSON.stringify(nextState) !== JSON.stringify(this.state)) {
+    else if(JSON.stringify(nextState) !== JSON.stringify(this.state) ||
+              nextProps.mod !== "Social") {
       return true;
     }
     return false;  
@@ -20,19 +23,24 @@ class Trend extends Component {
     const { data } = this.state;
     const { mod } = this.props;
     return (
-      <div className="Trend" id="Trend">
-        {data && mod === "Social" ? <AreaChart 
-                  width={document.getElementById("Trend").getBoundingClientRect().width} 
-                  height={document.getElementById("Trend").getBoundingClientRect().height} 
-                  data={data}
-                  margin={{top: 10, right: 30, left: 0, bottom: 0}}
-                >
-                  <CartesianGrid strokeDasharray="3 3"/>
-                  <XAxis dataKey="Time"/>
-                  <YAxis/>
-                  <Tooltip/>
-                  <Area type='monotone' dataKey='Count' stroke='#8884d8' fill='#8884d8' />
-                </AreaChart> : "Loading"}
+      <div className="Trend" id="Trend" style={{maxHeight: '20vh', paddingTop: '10px'}}>
+        <Paper style={{height: '20vh', backgroundColor: '#e1eef6'}}>
+          {data && mod === "Social" ? 
+            <AreaChart 
+              width={document.getElementById("Trend").getBoundingClientRect().width} 
+              height={document.getElementById("Trend").getBoundingClientRect().height} 
+              data={data}
+              margin={{top: 10, right: 30, left: 0, bottom: 0}}
+            >
+              <CartesianGrid strokeDasharray="3 3"/>
+              <XAxis dataKey="Time"/>
+              <YAxis/>
+              <Tooltip/>
+              <Area type='monotone' dataKey='Count' stroke='#FE7F2D' fill='#B034FF' />
+            </AreaChart> : 
+            ""
+          }
+        </Paper>
       </div>
     );
   }

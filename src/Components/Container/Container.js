@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import './Container.css';
 import Header from './../Header/Header';
 import Content from './../Content/Content';
+
+import Grid from '@material-ui/core/Grid';
 
 class Container extends Component {
   state = {
@@ -12,19 +13,25 @@ class Container extends Component {
 
   render() {
     return (
-      <div className="Container">
-        <Header 
-          searchEvent={this._searchEvent}
-          keyword={this.state.keyword}
-          mod={this.state.mod} 
-        />
-        <Content 
-          userKey={this.state.userKey} 
-          mod={this.state.mod} 
-          keyword={this.state.keyword}
-          categoryEvent={this._categoryEvent} 
-          topicSearchEvent={this._topicSearchEvent}
-        />
+      <div className="container" style={{backgroundColor: '#A1C181'}}>
+        <Grid container>
+          <Grid item xs={12}>
+            <Header 
+              searchEvent={this._searchEvent}
+              keyword={this.state.keyword}
+              mod={this.state.mod} 
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Content 
+              userKey={this.state.userKey} 
+              mod={this.state.mod} 
+              keyword={this.state.keyword}
+              categoryEvent={this._categoryEvent} 
+              topicSearchEvent={this._topicSearchEvent}
+            />
+          </Grid>
+        </Grid>
       </div>
     );
   }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import './MainContent.css';
 import Post from './../Post/Post';
+
+import Grid from '@material-ui/core/Grid';
 
 class MainContent extends Component {
   state = {}
@@ -9,7 +10,8 @@ class MainContent extends Component {
     if(JSON.stringify(nextProps) !== JSON.stringify(this.props)) {
       this._getData(nextProps)
     }
-    else if(JSON.stringify(nextState) !== JSON.stringify(this.state)) {
+    else if(JSON.stringify(nextState) !== JSON.stringify(this.state) ||
+              nextProps.mod !== "Social") {
       return true;
     }
     return false;  
@@ -21,38 +23,67 @@ class MainContent extends Component {
 
   _renderData = () => {
     if(this.props.mod === "Social") {
-      const data = this.state.data.map(datum => {
-        return <Post
-          title={datum.fields.title[0]}
-          date={datum.fields.published_date[0]}
-          uri={datum.fields.source_uri[0]}
-          content={datum.fields.content[0]}
-          image={datum.fields.images ? datum.fields.images[0] : false}
-          key={datum.fields.title[0]}
-        />
-      })
-      return data;
+        return (
+          <Grid 
+            id="MainContent"
+            item xs={12} 
+            style={{
+              marginTop: '10px',
+              overflowY: 'auto', 
+              overflowX: 'hidden'
+            }}
+          >
+            {this.state.data.map(datum => (
+              <Post
+                title={datum.fields.title[0]}
+                date={datum.fields.published_date[0]}
+                uri={datum.fields.source_uri[0]}
+                content={datum.fields.content[0]}
+                image={datum.fields.images ? datum.fields.images[0] : false}
+                key={datum.fields.title[0]}
+              />
+            ))}
+          </Grid>
+        )
     }
     else {
-      const data = this.state.data.map(datum => {
-        return <Post
-          title={datum.title}
-          date={datum.date}
-          uri={datum.orgUrl}
-          content={datum.content}
-          image={datum.selected_image ? datum.selected_image.url : false}
-          key={datum.title}
-        />
-      })
-      return data;
+      return (
+        <Grid 
+          id="MainContent"
+          item xs={12} 
+          style={{
+            marginTop: '10px',
+            overflowY: 'auto', 
+            overflowX: 'hidden'
+          }}
+        >
+          {this.state.data.map(datum => (
+            <Post
+              title={datum.title}
+              date={datum.date}
+              uri={datum.orgUrl}
+              content={datum.content}
+              image={datum.selected_image ? datum.selected_image.url : false}
+              key={datum.title}
+            />
+          ))}
+        </Grid>
+      )
     }
   }
 
   render() {
       const { data } = this.state;
     return (
-      <div className="MainContent" id="MainContent">
-        {data ? this._renderData() : "Loading"}
+      <div className="MainContent" style={{height: '66vh'}}>
+        <Grid 
+          container  
+          style={{ 
+            height: '66vh'
+          }}
+        >
+          {data ? this._renderData() : ""}
+        </Grid>
       </div>
     );
   }
