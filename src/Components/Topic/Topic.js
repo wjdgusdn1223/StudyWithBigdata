@@ -17,7 +17,7 @@ class Topic extends Component {
           style={{marginLeft: '30px'}}
         >
           <Typography variant="display1">
-            {id + 'st - '}
+            {id + ' - '}
           </Typography>
           <Button 
             onClick={this._topicEvent} 

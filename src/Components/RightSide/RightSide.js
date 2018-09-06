@@ -61,7 +61,6 @@ class RightSide extends Component {
                 maxHeight: '86vh',
                 backgroundColor: '#A593E0'
               }}
-              id="RightSide"
             >
               <Typography 
                   variant="display2"
@@ -80,6 +79,7 @@ class RightSide extends Component {
                   overflowX: 'hidden',
                   height: '80vh'
                 }}
+                id="RightSide"
               >
                 {data && mod === "Social" ? this._renderData() : 
                   <Grid 
