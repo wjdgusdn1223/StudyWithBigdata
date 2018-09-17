@@ -15,7 +15,7 @@ class Post extends Component {
   }
 
   render() {
-    const { title, date, content, image } = this.props;
+    const { title, date, content, image, keyword } = this.props;
     return (
       <div>
         <Paper style={{marginBottom: '10px', marginLeft: '5px', marginRight: '5px'}}>
@@ -34,16 +34,32 @@ class Post extends Component {
           fullWidth={true}
         >
           <DialogTitle id="scroll-dialog-title">
-            <Typography variant='Headline'>
-              {title}
-            </Typography>
+            <Typography 
+              variant='headline'
+              dangerouslySetInnerHTML={ {__html: 
+                title.replace(
+                  new RegExp(keyword, "gi"),
+                  '<span style="background-color:yellow">' + 
+                  keyword + 
+                  '</span>'
+                )
+              }}
+            />
           </DialogTitle>
           <DialogContent>
             <img src={image} alt={title} width="100%" height="auto" />
             <DialogContentText>
-              <Typography variant='subheading'>
-                {content}
-              </Typography>
+              <Typography 
+                variant='subheading'
+                dangerouslySetInnerHTML={ {__html: 
+                  content.replace(
+                    new RegExp(keyword, "gi"),
+                    '<span style="background-color:yellow">' + 
+                    keyword + 
+                    '</span>'
+                  )
+                }}
+              />
             </DialogContentText>
           </DialogContent>
           <DialogActions>

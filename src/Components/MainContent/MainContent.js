@@ -42,6 +42,7 @@ class MainContent extends Component {
                 content={datum.fields.content[0]}
                 image={datum.fields.images ? datum.fields.images[0] : false}
                 key={datum.fields.title[0]}
+                keyword={this.props.keyword}
               />
             ))}
           </Grid>
@@ -66,6 +67,7 @@ class MainContent extends Component {
               content={datum.content}
               image={datum.selected_image ? datum.selected_image.url : false}
               key={datum.title}
+              keyword={this.props.keyword}
             />
           ))}
         </Grid>

@@ -58,11 +58,7 @@ class Trend extends Component {
   _getData = async (nProps) => {
     const tmpData = await this._callApi(nProps)
 
-    console.log(tmpData)
-
     const data = this._convertData(tmpData)
-
-    console.log(data);
 
     this.setState({
       data
